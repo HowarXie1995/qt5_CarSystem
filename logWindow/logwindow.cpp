@@ -17,9 +17,9 @@ logWindow::logWindow(QWidget *parent) :
     //3)设置当前页面
     ui->stackedWidget->setCurrentWidget(ui->page_login);
     //4)设置名字图标
-    this->setWindowTitle("XXX");
-    //QIcon icon("");
-    //this->setWindowIcon(icon);
+    this->setWindowTitle("车库管理系统");
+    QIcon icon("car.png");
+    this->setWindowIcon(icon);
     //全屏方法
     //setParent(0);
     //showFullScreen();
@@ -34,6 +34,12 @@ void logWindow::clearAlltext()
     ui->line_R_Pasw->clear();
     ui->line_R_RPasw->clear();
     ui->line_R_User->clear();
+}
+
+void logWindow::initCarsysWindow()
+{
+   carSysdb = new CarsysWindow;
+   //connect(carSysdb, SIGNAL(showlogWindow()), this, SLOT(LogOut()));
 }
 
 /*
@@ -126,8 +132,11 @@ void logWindow::on_bt_Login_clicked()
         case EXIST_YES:     //成功
 
             //myMplayerShow->getUserInf(userInf);
+            initCarsysWindow();
+            carSysdb->getUserInf(userInf);
             //显示用户界面
             this->hide();
+            carSysdb->show();
             //myMplayerShow->show();
         }
 
@@ -230,9 +239,10 @@ void logWindow::on_pushButton_clicked()
         QTime dieTime = QTime::currentTime().addMSecs(2000);
         while( QTime::currentTime() < dieTime )
             QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
-        //myMplayerShow->getUserInf(userInf);
+        initCarsysWindow();
+        carSysdb->getUserInf(userInf);
         //显示用户界面
         this->hide();
-        //myMplayerShow->show();
+        carSysdb->show();
     }
 }

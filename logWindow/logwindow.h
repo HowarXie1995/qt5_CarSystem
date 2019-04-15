@@ -7,7 +7,9 @@
 #include <QMessageBox>
 #include <QTime>
 
-#include <logWindow//loginfunc.h>
+#include "logWindow/loginfunc.h"
+#include "carsyswindow.h"
+
 
 namespace Ui {
 class logWindow;
@@ -21,7 +23,7 @@ public:
     explicit logWindow(QWidget *parent = 0);
     ~logWindow();
     void clearAlltext();              //清空
-    void initmyWindow();               //初始化
+    void initCarsysWindow();               //初始化
 
 private slots:
     void on_bt_Register_clicked();      //按钮_跳转：注册页面
@@ -42,7 +44,7 @@ private slots:
 private:
     Ui::logWindow *ui;
     loginFunc *logdb;
-    //Mymplayer *myMplayerShow;
+    CarsysWindow *carSysdb;
     UserData userInf;
 
 };
