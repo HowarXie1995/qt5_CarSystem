@@ -30,7 +30,7 @@ public:
     ERROR initSerail();
 
     //初始化串口(循环版本)
-    ERROR initSerail(int time_msc);
+    void reinitSerail();
 
     //接收数据
 

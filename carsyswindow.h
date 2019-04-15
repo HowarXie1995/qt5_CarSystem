@@ -4,6 +4,8 @@
 #include <QMainWindow>
 #include "logWindow/loginfunc.h"
 #include "modbushandle.h"
+#include "QProcess"
+#include "QTime"
 
 namespace Ui {
 class CarsysWindow;
@@ -24,6 +26,7 @@ public:/*****************************************************公有***功能函�
 //================================================================================================================================
       //获得用户数据
       void getUserInf(UserData infor);
+      void reinitSerial();
 
 
 private:
@@ -31,6 +34,8 @@ private:
     UserData userInf;				//用户数据
     bool Datalock;					//数据锁初始true,数据可继续发送，数据读取时false
     modbusHandle  moddb;			//提供modbus数据发送，数据接收处理等函数
+    QProcess * myprocess;
+    QTimer *timer;					//计时器
 };
 
 #endif // CARSYSWINDOW_H

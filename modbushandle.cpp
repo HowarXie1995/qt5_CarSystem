@@ -30,15 +30,11 @@ ERROR modbusHandle::initSerail()
 
 }
 
-ERROR modbusHandle::initSerail(int time_msc)
+void modbusHandle::reinitSerail()
 {
-    while(error == SERIAL_OPEN_FAIL && stop == true)
+    while(error == SERIAL_OPEN_FAIL && stop == false)
     {
-     error = initSerail();
-        //延时3秒
-    qDebug() << "read Time" ;
-        QTime dieTime = QTime::currentTime().addMSecs(time_msc);
-        while( QTime::currentTime() < dieTime )
-            QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
+         error = initSerail();
+        qDebug() << "read Time" ;
     }
 }
