@@ -5,12 +5,11 @@
 modbusHandle::modbusHandle()
 {
     //初始化串口
-    error = initSerail();
-    stop = false;
+    initSerail();
 
 }
 
-ERROR modbusHandle::initSerail()
+void modbusHandle::initSerail()
 {
     //创建串口
       serial.setPortName("COM2");			//串口名
@@ -20,21 +19,14 @@ ERROR modbusHandle::initSerail()
       serial.setStopBits(QSerialPort::OneStop);		//停止位
       serial.setFlowControl(QSerialPort::NoFlowControl);	//流控制
       bool ok = serial.open(QIODevice::ReadWrite);
-      if(ok)
+      if(ok || serial.isOpen())
       {
-          return SERIAL_OPEN_SUCCES;
+          error = SERIAL_OPEN_SUCCES;
+          return ;
       }else
       {
-          return SERIAL_OPEN_FAIL;
+          error =  SERIAL_OPEN_FAIL;
+          return ;
       }
 
-}
-
-void modbusHandle::reinitSerail()
-{
-    while(error == SERIAL_OPEN_FAIL && stop == false)
-    {
-         error = initSerail();
-        qDebug() << "read Time" ;
-    }
 }

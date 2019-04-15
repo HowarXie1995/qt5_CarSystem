@@ -27,10 +27,8 @@ public:
     void sendSignal();
 
     //初始化串口
-    ERROR initSerail();
+    void initSerail();
 
-    //初始化串口(循环版本)
-    void reinitSerail();
 
     //接收数据
 
@@ -38,7 +36,6 @@ public:
     ERROR error;			//错误码
 private:
     QSerialPort serial;		//串口接口
-    bool stop;
 
 };
 

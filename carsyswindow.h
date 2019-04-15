@@ -5,7 +5,7 @@
 #include "logWindow/loginfunc.h"
 #include "modbushandle.h"
 #include "QProcess"
-#include "QTime"
+#include "QTimer"
 
 namespace Ui {
 class CarsysWindow;
@@ -26,8 +26,15 @@ public:/*****************************************************公有***功能函�
 //================================================================================================================================
       //获得用户数据
       void getUserInf(UserData infor);
-      void reinitSerial();
+      //串口是否正常连接检查
+      void creatSerialCheck(int msec);
+private slots:
+      //串口检查槽函数
+      void SerialCheck();
 
+      void on_actionfull_screen_triggered();
+
+      void on_actionout_full_screen_triggered();
 
 private:
     Ui::CarsysWindow *ui;
@@ -35,7 +42,8 @@ private:
     bool Datalock;					//数据锁初始true,数据可继续发送，数据读取时false
     modbusHandle  moddb;			//提供modbus数据发送，数据接收处理等函数
     QProcess * myprocess;
-    QTimer *timer;					//计时器
+    QTimer *timerSerial;					//计时器
+    bool stop;					//设置停止位
 };
 
 #endif // CARSYSWINDOW_H

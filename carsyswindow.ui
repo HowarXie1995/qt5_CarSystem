@@ -60,7 +60,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>22</height>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuok">
@@ -73,14 +73,14 @@
    </widget>
    <widget class="QMenu" name="menu">
     <property name="title">
-     <string>调整</string>
+     <string>页面</string>
     </property>
     <addaction name="actionfull_screen"/>
     <addaction name="actionout_full_screen"/>
    </widget>
    <widget class="QMenu" name="menu_2">
     <property name="title">
-     <string>调试信号</string>
+     <string>调试</string>
     </property>
     <addaction name="actionsignal_data"/>
    </widget>
@@ -114,12 +114,12 @@
   </action>
   <action name="actionfull_screen">
    <property name="text">
-    <string>full screen</string>
+    <string>全屏</string>
    </property>
   </action>
   <action name="actionout_full_screen">
    <property name="text">
-    <string>out full screen</string>
+    <string>退出全屏</string>
    </property>
   </action>
   <action name="actionsignal_data">
