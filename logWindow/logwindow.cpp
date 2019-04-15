@@ -59,7 +59,7 @@ void logWindow::LogOut()
 
 logWindow::~logWindow()
 {
-    //delete myMplayerShow;
+    delete carSysdb;
     delete ui;
 }
 

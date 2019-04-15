@@ -8,21 +8,22 @@ CarsysWindow::CarsysWindow(QWidget *parent) :
     ui->setupUi(this);
     //setParent(0);
     //showFullScreen();
-    if(SERIAL_OPEN_FAIL == moddb->error)
+
+    if(SERIAL_OPEN_FAIL == moddb.error)
     {
         ui->stackedWidget->setCurrentWidget(ui->page_erro);
         ui->label_erro->setText("串口打开失败");
-    }else
+        //moddb.initSerail(2000);
+    }else//串口打开成功后
     {
-        ui->stackedWidget->setCurrentWidget(ui->page_erro);
-        ui->label_erro->setText("串口打开成功");
+
     }
+
 
 }
 
 CarsysWindow::~CarsysWindow()
 {
-    free(moddb);
     delete ui;
 }
 
@@ -32,7 +33,3 @@ void CarsysWindow::getUserInf(UserData infor)
    //获得用户数据
 }
 
-void CarsysWindow::initModBusHandler()
-{
-   moddb = new modbusHandle;
-}

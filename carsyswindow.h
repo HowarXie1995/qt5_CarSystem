@@ -24,14 +24,13 @@ public:/*****************************************************公有***功能函�
 //================================================================================================================================
       //获得用户数据
       void getUserInf(UserData infor);
-      void initModBusHandler();
 
 
 private:
     Ui::CarsysWindow *ui;
     UserData userInf;				//用户数据
     bool Datalock;					//数据锁初始true,数据可继续发送，数据读取时false
-    modbusHandle * moddb;			//提供modbus数据发送，数据接收处理等函数
+    modbusHandle  moddb;			//提供modbus数据发送，数据接收处理等函数
 };
 
 #endif // CARSYSWINDOW_H
