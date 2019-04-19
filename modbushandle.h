@@ -9,6 +9,7 @@
 #include <QDebug>
 #include <QSerialPort>
 #include <QSerialPortInfo>
+#include <listcrc.h>
 
 typedef enum
 {
@@ -22,9 +23,8 @@ class modbusHandle
 {
 public:
     modbusHandle();
+    ~modbusHandle();
 
-    //发送Modbus数据
-    void sendSignal();
 
     //初始化串口
     void initSerail();
@@ -36,14 +36,55 @@ public:
  *函数返回值: 无
 */
     ERROR getErrorCode();
-
+//================================================================================================================================
+/*
+ *函数名称: sentModBus
+ *函数功能: 发送ModBus数据
+ *函数参数: 无
+ *函数返回值: 无
+*/
+    void sentModBus();
+//================================================================================================================================
+/*
+ *函数名称: isCanSend()
+ *函数功能: 判断是否可以发数据
+ *函数参数: 无
+ *函数返回值: bool类型 true可以发 false 不行
+*/
+    bool isCanSend();
+//================================================================================================================================
+/*
+ *函数名称: setSendPrimary
+ *函数功能: 设置是否可发送的值
+ *函数参数: bool类型，设置sendPrimary值
+ *函数返回值: 无
+*/
+    void setSendPrimary(bool ok);
+//================================================================================================================================
+/*
+ *函数名称: recvModBus
+ *函数功能: 通过serial接收modBus的数据
+ *函数参数: 无
+ *函数返回值: QByteArray类型的字符串
+*/
+    QByteArray recvModBus();
+//================================================================================================================================
+/*
+ *函数名称: analyData
+ *函数功能: 分析数据并返回一个char*数组
+ *函数参数: 设置车位的数目 int类型
+ *函数返回值: 处理好的数组 0：错误  01：空 10：满
+*/
+    char * analyData(int num);
 
     //接收数据
 
 private:
     ERROR error;		//错误码
     QSerialPort serial;		//串口接口
-
+    listCRC * crcdb;	//CRC校验函数接口
+    bool sendPrimary;
+    char * retArray;
 };
 
 #endif // MODBUSHANDLE_H

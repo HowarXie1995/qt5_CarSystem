@@ -6,193 +6,281 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>758</width>
+    <height>599</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>CarsysWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QStackedWidget" name="stackedWidget">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>20</y>
-      <width>740</width>
-      <height>520</height>
-     </rect>
-    </property>
-    <property name="currentIndex">
-     <number>1</number>
-    </property>
-    <widget class="QWidget" name="page_erro">
-     <widget class="QLabel" name="label_erro">
-      <property name="geometry">
-       <rect>
-        <x>250</x>
-        <y>310</y>
-        <width>241</width>
-        <height>91</height>
-       </rect>
+   <layout class="QHBoxLayout" name="horizontalLayout_2">
+    <item>
+     <widget class="QStackedWidget" name="stackedWidget">
+      <property name="enabled">
+       <bool>true</bool>
       </property>
-      <property name="font">
-       <font>
-        <pointsize>20</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
       </property>
-      <property name="text">
-       <string>错误码</string>
+      <property name="minimumSize">
+       <size>
+        <width>740</width>
+        <height>520</height>
+       </size>
       </property>
-      <property name="textFormat">
-       <enum>Qt::AutoText</enum>
+      <property name="maximumSize">
+       <size>
+        <width>740</width>
+        <height>520</height>
+       </size>
       </property>
-      <property name="margin">
-       <number>0</number>
+      <property name="currentIndex">
+       <number>1</number>
       </property>
+      <widget class="QWidget" name="page_erro">
+       <widget class="QLabel" name="label_erro">
+        <property name="geometry">
+         <rect>
+          <x>250</x>
+          <y>310</y>
+          <width>241</width>
+          <height>91</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>20</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>错误码</string>
+        </property>
+        <property name="textFormat">
+         <enum>Qt::AutoText</enum>
+        </property>
+        <property name="margin">
+         <number>0</number>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="page_oneFloor">
+       <widget class="QWidget" name="widget" native="true">
+        <property name="geometry">
+         <rect>
+          <x>250</x>
+          <y>150</y>
+          <width>240</width>
+          <height>200</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>240</width>
+          <height>200</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>240</width>
+          <height>200</height>
+         </size>
+        </property>
+        <widget class="QLCDNumber" name="lcdNowTime">
+         <property name="geometry">
+          <rect>
+           <x>110</x>
+           <y>150</y>
+           <width>130</width>
+           <height>50</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QLCDNumber" name="lcdCarSum">
+         <property name="geometry">
+          <rect>
+           <x>160</x>
+           <y>50</y>
+           <width>80</width>
+           <height>50</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QLCDNumber" name="lcdCarLeft">
+         <property name="geometry">
+          <rect>
+           <x>160</x>
+           <y>0</y>
+           <width>80</width>
+           <height>50</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_CarLeft">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>160</width>
+           <height>50</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>Algerian</family>
+           <pointsize>23</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>CarLeft</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_CarSum">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>50</y>
+           <width>160</width>
+           <height>50</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>Algerian</family>
+           <pointsize>23</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>CarSum</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+        <widget class="QLCDNumber" name="lcdNowMDay">
+         <property name="geometry">
+          <rect>
+           <x>120</x>
+           <y>100</y>
+           <width>120</width>
+           <height>50</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QLCDNumber" name="lcdNowYear">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>100</y>
+           <width>120</width>
+           <height>50</height>
+          </rect>
+         </property>
+         <property name="layoutDirection">
+          <enum>Qt::LeftToRight</enum>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_Week">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>150</y>
+           <width>110</width>
+           <height>50</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>Algerian</family>
+           <pointsize>23</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Week</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QPushButton" name="bt_A001">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>74</y>
+          <width>50</width>
+          <height>25</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Algerian</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="bt_A002">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>116</y>
+          <width>50</width>
+          <height>25</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>PushButton</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="bt_A003">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>155</y>
+          <width>50</width>
+          <height>25</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>PushButton</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton">
+        <property name="geometry">
+         <rect>
+          <x>260</x>
+          <y>400</y>
+          <width>81</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>PushButton</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="page"/>
      </widget>
-    </widget>
-    <widget class="QWidget" name="page_oneFloor">
-     <widget class="QWidget" name="widget" native="true">
-      <property name="geometry">
-       <rect>
-        <x>250</x>
-        <y>150</y>
-        <width>240</width>
-        <height>200</height>
-       </rect>
-      </property>
-      <widget class="QLCDNumber" name="lcdNowTime">
-       <property name="geometry">
-        <rect>
-         <x>110</x>
-         <y>150</y>
-         <width>130</width>
-         <height>50</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QLCDNumber" name="lcdCarSum">
-       <property name="geometry">
-        <rect>
-         <x>160</x>
-         <y>50</y>
-         <width>80</width>
-         <height>50</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QLCDNumber" name="lcdCarLeft">
-       <property name="geometry">
-        <rect>
-         <x>160</x>
-         <y>0</y>
-         <width>80</width>
-         <height>50</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_CarLeft">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>160</width>
-         <height>50</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Algerian</family>
-         <pointsize>23</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>CarLeft</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_CarSum">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>50</y>
-         <width>160</width>
-         <height>50</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Algerian</family>
-         <pointsize>23</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>CarSum</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-      <widget class="QLCDNumber" name="lcdNowMDay">
-       <property name="geometry">
-        <rect>
-         <x>120</x>
-         <y>100</y>
-         <width>120</width>
-         <height>50</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QLCDNumber" name="lcdNowYear">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>100</y>
-         <width>120</width>
-         <height>50</height>
-        </rect>
-       </property>
-       <property name="layoutDirection">
-        <enum>Qt::LeftToRight</enum>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_Week">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>150</y>
-         <width>110</width>
-         <height>50</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Algerian</family>
-         <pointsize>23</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Week</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-     </widget>
-    </widget>
-   </widget>
+    </item>
+   </layout>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>758</width>
      <height>22</height>
     </rect>
    </property>

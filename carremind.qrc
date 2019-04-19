@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/new/carRemind">
+        <file>iMage/carIcon/emptyCar.jpg</file>
+        <file>iMage/carIcon/errorCar.jpg</file>
+        <file>iMage/carIcon/occupCar.jpg</file>
+    </qresource>
+    <qresource prefix="/new/prefix1"/>
+</RCC>

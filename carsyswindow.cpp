@@ -9,6 +9,7 @@ CarsysWindow::CarsysWindow(QWidget *parent) :
     ui->setupUi(this);
     initCarSysWindow();							//初始化界面
     creatDataCheck(3000);						//创建数据检查定时器，传入3s
+    setCarIcon();								//设置按钮状态
 
 
 
@@ -82,29 +83,36 @@ void CarsysWindow::displayTime()
 
 void CarsysWindow::stopDataTimer()
 {
-   timerData->stop();
+    timerData->stop();
+}
+
+void CarsysWindow::setCarIcon()
+{
+    QIcon carEmpty_ico(":/new/carRemind/iMage/carIcon/emptyCar.jpg");
+    QIcon carError_ico(":/new/carRemind/iMage/carIcon/errorCar.jpg");
+    QIcon carOccup_ico(":/new/carRemind/iMage/carIcon/occupCar.jpg");
+    QList<QPushButton*> button = this->findChildren<QPushButton*>();
+    qDebug() << button.count();
+    for(int i = 0; i < button.count(); i++){
+        qDebug() << button.at(i);
+    }
+
 }
 void CarsysWindow::DataCheck()
 {
    moddb->initSerail();
-   switch(moddb->getErrorCode())
-   {
-   case SERIAL_OPEN_SUCCES:	//串口打开成功
-   {
-       if(ui->stackedWidget->currentWidget() != ui->page_oneFloor)
-       {
+   switch(moddb->getErrorCode()){
+   case SERIAL_OPEN_SUCCES:{	//打开串口成功
+       if(ui->stackedWidget->currentWidget() != ui->page_oneFloor){
             ui->stackedWidget->setCurrentWidget(ui->page_oneFloor);
-       }else
-       {
+       }else{
             qDebug() << "---------";
        }
 
    }break;
-   case SERIAL_OPEN_FAIL:	//串口打开失败
-   {
+   case SERIAL_OPEN_FAIL:{		//打开串口失败
         //跳转到运行页面
-       if(ui->stackedWidget->currentWidget() != ui->page_erro)
-       {
+       if(ui->stackedWidget->currentWidget() != ui->page_erro){
             ui->stackedWidget->setCurrentWidget(ui->page_erro);
        }
        ui->label_erro->setText("串口打开失败");
@@ -129,4 +137,9 @@ void CarsysWindow::on_actionexit_triggered()
 {
    this->close();
    qApp->quit();
+}
+
+void CarsysWindow::on_pushButton_clicked()
+{
+   moddb->sentModBus();
 }

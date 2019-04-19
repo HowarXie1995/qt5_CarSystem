@@ -5,6 +5,7 @@
 #-------------------------------------------------
 QT       += sql
 QT       += serialport
+QT       += gui
 
 QT       += core gui
 QT	 += core
@@ -31,14 +32,19 @@ SOURCES += \
         carsyswindow.cpp \
     logWindow/loginfunc.cpp \
     logWindow/logwindow.cpp \
-    modbushandle.cpp
+    modbushandle.cpp \
+    listcrc.cpp
 
 HEADERS += \
         carsyswindow.h \
     logWindow/loginfunc.h \
     logWindow/logwindow.h \
-    modbushandle.h
+    modbushandle.h \
+    listcrc.h
 
 FORMS += \
         carsyswindow.ui \
     logWindow/logwindow.ui
+
+RESOURCES += \
+    carremind.qrc
