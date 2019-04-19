@@ -30,3 +30,8 @@ void modbusHandle::initSerail()
       }
 
 }
+
+ERROR modbusHandle::getErrorCode()
+{
+    return error;
+}
