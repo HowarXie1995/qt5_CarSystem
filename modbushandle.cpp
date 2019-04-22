@@ -91,22 +91,31 @@ QByteArray modbusHandle::recvModBus()
 
 char *modbusHandle::analyData(int num)
 {
-    num = 2;
-    if(SERIAL_OPEN_SUCCES == error && !isCanSend()){
-        if(nullptr == retArray){
-             retArray = (char*)malloc(sizeof(char) * num * 4);
+    num = 20;
+    if(SERIAL_OPEN_SUCCES == error && !isCanSend()){	//判断是否可以分析数据
+        //获得数据,并验证其正确性
+        QByteArray data = recvModBus();
+        std::string checkData = data.toStdString();
+        std::cout << "checkData:" << checkData << std::endl;
+        //创建容量
+        if(nullptr != retArray){
+            delete retArray;
         }
-        memset(retArray, 0, sizeof(char) * num * 4);
-        QByteArray data = recvModBus();		//获得数据
+        retArray = (char*)malloc(sizeof(char) * num);
+        memset(retArray, 0, sizeof(char) * num);
+
         qDebug() << data.size();
-        for(int i = 3; i < data.size() - 6 && i < num + 3; i+=4){
+        int tempSize = num;				//保存num值
+        for(int i = 3; i < data.size() - 6 && tempSize > 0; ++i){
             unsigned char temp = data.at(i);
-            for(int j = 3; j >= 0; --j){
-                retArray[i + j] = temp & 0x03;
-                qDebug("%c", retArray[i + j] + '0');
+            qDebug() << "temp:" << temp;
+            for(int j = tempSize > 3?3:(tempSize%4 - 1);
+                j >= 0 && tempSize > 0;
+                --j, --tempSize){
+                retArray[(i-3)*4 + j] = temp & 0x03;
+                qDebug("retArray[%d] = %c", (i-3)*4 +j,retArray[(i-3)*4 + j] + '0');
                 temp = temp >> 2;
             }
-
         }
     }
     setSendPrimary(true);
